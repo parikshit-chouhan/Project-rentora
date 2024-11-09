@@ -127,7 +127,7 @@ const ListingDetails = () => {
                 const { order_id: orderId, payment_session_id: sessionId } = res.data;
                 const checkoutOptions = {
                     paymentSessionId: sessionId,
-                    returnUrl: `http://localhost:3000/verify/${orderId}/${userId}/${id}`, // Pointing to frontend URL
+                    returnUrl: `https://rentora.vercel.app/verify/${orderId}/${userId}/${id}`, // Pointing to frontend URL
                     headers: {
                         "user-id": userId,
                         "listing-id": id,

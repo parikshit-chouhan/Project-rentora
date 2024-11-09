@@ -66,7 +66,7 @@ function generateOrderId() {
 const cors = require("cors");
 app.use(
     cors({
-        origin: ["http://localhost:3000", "http://localhost:3001"],
+        origin: ["http://localhost:3000", "http://localhost:3001", "https://rentora.vercel.app/"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
