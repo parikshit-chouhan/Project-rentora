@@ -4,12 +4,22 @@ Rentora is a web-based platform that connects individuals seeking accommodations
 
 ## Features
 
-- **Booking & Payments**: Integrated the **Cashfree payment gateway** to allow users to make secure payments during booking on the Rentora platform.
-- **Owner Dashboard**: Property owners can manage their listings, bookings, and payments.
-- **User Authentication**: Secure login and user authentication using JWT and cookies.
-- **Safe & Secure**: Rent or book properties with a trusted and secure process.
-- **Beautiful Homes**: Discover and book beautiful, fully-equipped homes for rent.
-- **Great Locations**: Search for properties in various cities and countries.
+-## Features
+
+- **Booking & Payments**: Integrated the **Cashfree payment gateway** to allow users to make secure payments during the booking process on the Rentora platform. Users can pay seamlessly for their bookings, and the system verifies payment success to confirm the booking (TEST MODE ONLY)
+
+- **Owner Dashboard**:Property owners can add, edit, or delete listings. Each listing contains essential information such as property images, pricing, and availability, ensuring a smooth and easy process for owners to manage their properties.
+
+- **User Authentication & Authorization**: Secure login and user authentication are implemented using **JWT (JSON Web Tokens)** and **cookies**. After signing in, users are issued a token that grants them access to protected routes within the app, such as the dashboard and booking pages. Unauthorized users are redirected to the login page. This ensures that each user has the proper level of access, with the frontend and backend securely managing authentication and authorization.
+
+- **Beautiful Homes**: Discover and book beautiful, fully-equipped homes for rent. Each property listing includes detailed descriptions, high-quality images, and other information, making it easy to find the perfect home.
+
+- **Booking Confirmation & History**: Once a payment is successfully processed, users receive a booking confirmation. All past bookings and payment history are visible under the "My Bookings" section, ensuring users can easily manage and track their reservations.
+
+- **Listing Management**: Property owners can add, edit, or delete listings. Each listing contains essential information such as property images, pricing, and availability, ensuring a smooth and easy process for owners to manage their properties.
+
+- **Secure Transactions**: Using **Cashfree** for payments ensures that all transactions are encrypted and handled securely, making Rentora a trustworthy platform for both property owners and renters.
+
 
 ## Tech Stack
 
