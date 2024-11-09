@@ -64,13 +64,8 @@ function generateOrderId() {
 
 // To allow frontend port request to ouer server 
 const cors = require("cors");
-app.use(
-    cors({
-        origin: ["http://localhost:3000", "http://localhost:3001", "https://rentora.vercel.app/"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials: true,
-    })
-);
+app.use(cors());
+
 
 
 // for password encryption and dcryption
