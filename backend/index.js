@@ -68,17 +68,17 @@ const cors = require("cors");
 const allowedOrigins = ['https://rentora.vercel.app']; // Allow the specific frontend URL
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    // Check if origin is in the allowed list
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, // Allow credentials (cookies, authorization headers)
+    origin: function (origin, callback) {
+        // Check if origin is in the allowed list
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true, // Allow credentials (cookies, authorization headers)
 };
 
 // Apply the CORS middleware
@@ -154,10 +154,10 @@ app.post("/signup", async (req, res) => {
         // Set token in cookie with secure and httpOnly options
         res.cookie("token", token, {
             withCredentials: true,  //to send cookies through response
-            httpOnly: false,
-            // httpOnly: true,         // makes cookie inaccessible to JavaScript in the client
-            // secure: process.env.NODE_ENV === "production", // only sends cookie over HTTPS in production
-            // sameSite: "strict",
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "Lax",
+            maxAge: 24 * 60 * 60 * 1000,
         });
 
         // Send success response with newly created user data
@@ -195,10 +195,10 @@ app.post("/login", async (req, res) => {
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
-            httpOnly: false,
-            // httpOnly: true,        // Security purpose ke liye
-            // sameSite: "Lax",       // Cross-site issues avoid karne ke liye
-            // secure: process.env.NODE_ENV === "production", // Production me secure flag
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "Lax",
+            maxAge: 24 * 60 * 60 * 1000,
         });
         res.status(200).json({ message: "User logged in successfully", success: true, user });
     } catch (error) {
@@ -461,8 +461,8 @@ app.post("/createBooking/:id", userVerification, async (req, res) => {
                 accept: 'application/json',
                 'content-type': 'application/json',
                 'x-api-version': '2023-08-01',
-                'x-client-id':  process.env.CLIENT_ID,
-                'x-client-secret':  process.env.CLIENT_SECRET,
+                'x-client-id': process.env.CLIENT_ID,
+                'x-client-secret': process.env.CLIENT_SECRET,
             },
             data: {
                 customer_details: {
@@ -495,65 +495,65 @@ app.post("/createBooking/:id", userVerification, async (req, res) => {
 });
 
 
-    app.get("/verify/:orderId/:userId/:id", async (req, res) => {
-        const orderId = req.params.orderId;
-        const userId = req.params.userId;
-        const listingId = req.params.id;
+app.get("/verify/:orderId/:userId/:id", async (req, res) => {
+    const orderId = req.params.orderId;
+    const userId = req.params.userId;
+    const listingId = req.params.id;
 
-        if (!userId || !listingId) {
-            return res.status(400).json({ error: "User ID and Listing ID are required." });
-        }
+    if (!userId || !listingId) {
+        return res.status(400).json({ error: "User ID and Listing ID are required." });
+    }
 
-        try {
-            const options = {
-                method: "GET",
-                url: `https://sandbox.cashfree.com/pg/orders/${orderId}`,
-                headers: {
-                    accept: "application/json",
-                    "x-api-version": "2023-08-01",
-                    "x-client-id": process.env.CLIENT_ID,
-                    "x-client-secret": process.env.CLIENT_SECRET,
-                },
-            };
+    try {
+        const options = {
+            method: "GET",
+            url: `https://sandbox.cashfree.com/pg/orders/${orderId}`,
+            headers: {
+                accept: "application/json",
+                "x-api-version": "2023-08-01",
+                "x-client-id": process.env.CLIENT_ID,
+                "x-client-secret": process.env.CLIENT_SECRET,
+            },
+        };
 
-            const response = await axios.request(options);
-            const orderStatus = response.data.order_status;
-            console.log(response)
-            if (orderStatus === "PAID") {
-                const Booking = new booking({
-                    userId: userId,
-                    listingId: listingId,
-                    orderId: orderId,
-                    status: "PAID",
-                });
+        const response = await axios.request(options);
+        const orderStatus = response.data.order_status;
+        console.log(response)
+        if (orderStatus === "PAID") {
+            const Booking = new booking({
+                userId: userId,
+                listingId: listingId,
+                orderId: orderId,
+                status: "PAID",
+            });
 
-                await Booking.save();
-                const existingListing = await listing.findById(listingId);
-                if (!existingListing) {
-                    return res.status(404).json({ success: false, message: 'Listing not found' });
-                }
-
-                if (existingListing.status === "Occupied") {
-                    return res.status(400).json({ success: false, message: 'Listing is already occupied' });
-                }
-
-                existingListing.status = "Occupied";
-                await existingListing.save();
-                console.log("Booking successful and saved in database.");
-                return res.json({ success: true, status: "PAID", message: "Booking confirmed and saved!" });
-
-            } else if (orderStatus === "ACTIVE") {
-                console.log("Wait for payment to complete.");
-                return res.json({ success: false, status: "ACTIVE", message: "Payment in process. Please wait." });
-            } else {
-                console.log("Payment failed.");
-                return res.json({ success: false, status: "FAILED", message: "Payment failed. Booking not completed." });
+            await Booking.save();
+            const existingListing = await listing.findById(listingId);
+            if (!existingListing) {
+                return res.status(404).json({ success: false, message: 'Listing not found' });
             }
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({ error: "An error occurred while verifying payment." });
+
+            if (existingListing.status === "Occupied") {
+                return res.status(400).json({ success: false, message: 'Listing is already occupied' });
+            }
+
+            existingListing.status = "Occupied";
+            await existingListing.save();
+            console.log("Booking successful and saved in database.");
+            return res.json({ success: true, status: "PAID", message: "Booking confirmed and saved!" });
+
+        } else if (orderStatus === "ACTIVE") {
+            console.log("Wait for payment to complete.");
+            return res.json({ success: false, status: "ACTIVE", message: "Payment in process. Please wait." });
+        } else {
+            console.log("Payment failed.");
+            return res.json({ success: false, status: "FAILED", message: "Payment failed. Booking not completed." });
         }
-    });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "An error occurred while verifying payment." });
+    }
+});
 
 
 
