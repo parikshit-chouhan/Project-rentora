@@ -64,7 +64,22 @@ function generateOrderId() {
 
 // To allow frontend port request to ouer server 
 const cors = require("cors");
-app.use(cors());
+const allowedOrigins = ['https://rentora.vercel.app'];
+
+const corsOptions = {
+  origin: function(origin, callback) {
+    // Allow requests from specified origins
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+};
+
+app.use(cors(corsOptions)); // Apply CORS to all routes
 
 
 
