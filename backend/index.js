@@ -64,8 +64,6 @@ function generateOrderId() {
 
 // To allow frontend port request to ouer server 
 const cors = require("cors");
-const cors = require('cors');
-const app = express();
 
 const allowedOrigins = ['https://rentora.vercel.app']; // Allow the specific frontend URL
 
