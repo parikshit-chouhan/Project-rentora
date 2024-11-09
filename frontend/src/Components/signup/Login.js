@@ -30,7 +30,7 @@ function Login() {
         setLoading(true);
         try {
             const { data } = await axios.post(
-                'http://localhost:3002/login',
+                'https://rentora-c5dt.onrender.com/login',
                 { email, password, number },
                 { withCredentials: true }
             );

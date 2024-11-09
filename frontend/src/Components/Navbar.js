@@ -13,7 +13,7 @@ function Navbar() {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post("http://localhost:3002/logout", {}, { withCredentials: true });
+            const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {}, { withCredentials: true });
             const { success, message } = response.data;
 
             if (success) {

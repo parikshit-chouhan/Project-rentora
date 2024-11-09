@@ -88,7 +88,7 @@ const ListingDetails = () => {
     useEffect(() => {
         const fetchListingDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:3002/listings/${id}`);
+                const response = await axios.get(`https://rentora-c5dt.onrender.com/listings/${id}`);
                 setListing(response.data.listing);
                 setLoading(false);
             } catch (err) {
@@ -114,7 +114,7 @@ const ListingDetails = () => {
         try {
             // Get session data for Cashfree
             const res = await axios.post(
-                `http://localhost:3002/createBooking/${id}`,
+                `https://rentora-c5dt.onrender.com/createBooking/${id}`,
                 { userId },
                 {
                     headers: {
@@ -160,7 +160,7 @@ const ListingDetails = () => {
     const confirmDelete = async () => {
         setShowConfirm(false);
         try {
-            const response = await axios.delete(`http://localhost:3002/listing/${id}`, {
+            const response = await axios.delete(`https://rentora-c5dt.onrender.com/listing/${id}`, {
                 headers: {
                     Authorization: `Bearer ${cookies.token}`,
                 },

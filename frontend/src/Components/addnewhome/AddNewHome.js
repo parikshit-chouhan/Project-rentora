@@ -58,7 +58,7 @@ const CreateListing = () => {
         }
 
         try {
-            const response = await axios.post(`http://localhost:3002/addListing`, formDataToSend, {
+            const response = await axios.post(`https://rentora-c5dt.onrender.com`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

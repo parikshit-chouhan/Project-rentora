@@ -6,7 +6,7 @@ function Explore() {
     const [allListings, setAllListings] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3002/allListings")
+        axios.get("https://rentora-c5dt.onrender.com/allListings")
             .then((res) => {
                 if (res.data.status) {
                     setAllListings(res.data.allListings);

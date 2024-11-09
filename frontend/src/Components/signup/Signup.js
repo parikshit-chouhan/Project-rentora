@@ -35,7 +35,7 @@ function Signup() {
         setLoading(true);
         try {
             const { data } = await axios.post(
-                'http://localhost:3002/signup',
+                'https://rentora-c5dt.onrender.com/signup',
                 { ...inputValue },
                 { withCredentials: true }
             );

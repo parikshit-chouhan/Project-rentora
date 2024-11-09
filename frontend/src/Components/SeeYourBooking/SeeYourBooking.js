@@ -19,7 +19,7 @@ function SeeYourBooking() {
             }
 
             try {
-                const response = await axios.get(`http://localhost:3002/getBooking/${userId}`, {
+                const response = await axios.get(`https://rentora-c5dt.onrender.com/getBooking/${userId}`, {
                     headers: { 'Authorization': `Bearer ${cookies.token}` }
                 });
 
@@ -40,7 +40,7 @@ function SeeYourBooking() {
 
     const handleCancel = async (bookingId) => { // Accept bookingId as a parameter
         try {
-            const response = await axios.delete(`http://localhost:3002/cancelBooking/${bookingId}`, {
+            const response = await axios.delete(`https://rentora-c5dt.onrender.com/cancelBooking/${bookingId}`, {
                 headers: { 'Authorization': `Bearer ${cookies.token}` }
             });
 

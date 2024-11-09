@@ -70,7 +70,7 @@ const EditListing = () => {
         }
 
         try {
-            const response = await axios.put(`http://localhost:3002/listing/${id}`, formDataToSend, {
+            const response = await axios.put(`https://rentora-c5dt.onrender.com/listing/${id}`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

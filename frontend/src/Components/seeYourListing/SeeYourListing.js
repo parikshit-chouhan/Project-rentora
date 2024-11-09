@@ -19,7 +19,7 @@ function SeeYourListing() {
     
             const fetchListing = async () => {
                 try {
-                    const res = await axios.get(`http://localhost:3002/seeListing/${id}`, {
+                    const res = await axios.get(`https://rentora-c5dt.onrender.com/seeListing/${id}`, {
                         headers: {
                             'Authorization': `Bearer ${cookies.token}`,
                         }
