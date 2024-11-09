@@ -4,8 +4,6 @@ Rentora is a web-based platform that connects individuals seeking accommodations
 
 ## Features
 
--## Features
-
 - **Booking & Payments**: Integrated the **Cashfree payment gateway** to allow users to make secure payments during the booking process on the Rentora platform. Users can pay seamlessly for their bookings, and the system verifies payment success to confirm the booking (TEST MODE ONLY)
 
 - **Owner Dashboard**:Property owners can add, edit, or delete listings. Each listing contains essential information such as property images, pricing, and availability, ensuring a smooth and easy process for owners to manage their properties.
@@ -25,7 +23,7 @@ Rentora is a web-based platform that connects individuals seeking accommodations
 
 - **Frontend**: React.js
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB
+- **Database**: MongoDB Atlas
 - **Authentication**: JSON Web Tokens (JWT)
 - **Cloud Storage**: Cloudinary (for image storage)
 - **Payment Gateway**: Cashfree (for secure payments)
