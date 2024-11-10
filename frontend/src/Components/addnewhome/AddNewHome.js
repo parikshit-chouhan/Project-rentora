@@ -53,7 +53,7 @@ const CreateListing = () => {
             }
         };
         varifyCookie();
-    }, [token, navigate]);
+    }, [ navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
