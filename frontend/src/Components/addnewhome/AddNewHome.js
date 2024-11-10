@@ -9,6 +9,7 @@ const CreateListing = () => {
     const [cookies] = useCookies(['token']);
     const [isVerified, setIsVerified] = useState(false); // State for conditional rendering
     const [loading, setLoading] = useState(false);
+    const authToken = localStorage.getItem('token', token);
     const [formData, setFormData] = useState({
         title: '',
         houseno: '',
@@ -27,33 +28,21 @@ const CreateListing = () => {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     useEffect(() => {
-        const getTokenFromCookies = () => {
-            const cookies = document.cookie.split('; ');
-            const token = cookies.find(cookie => cookie.startsWith('token='));
-
-            if (token) {
-                return token.split('=')[1]; // Extract the token value
-            } else {
-                return null;
-            }
-        };
-
-        const token = getTokenFromCookies();
-        console.log(token); // Token ko print karein
-
         // Token check
+        console.log("token", authToken);
         const varifyCookie = () => {
-            if (!token) {
+            if (!authToken) {
                 handleError("Please log in to add new listing");
                 setTimeout(() => {
                     navigate("/login");
                 }, 1000);
+                return;
             } else {
                 setIsVerified(true); // Token verified
             }
         };
         varifyCookie();
-    }, [ navigate]);
+    }, [authToken, navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;

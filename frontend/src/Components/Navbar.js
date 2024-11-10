@@ -11,12 +11,20 @@ function Navbar() {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     const handleLogout = async () => {
+        try {
+            const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {}, { withCredentials: true });
+            const { success, message } = response.data;
 
-        localStorage.removeItem('username');
-        localStorage.removeItem('user_id');
-        localStorage.removeItem('token');
-        handleSuccess("User logged out successfull");
-        navigate("/");
+            if (success) {
+                localStorage.removeItem('username');
+                localStorage.removeItem('user_id');
+                localStorage.removeItem('token');
+                handleSuccess(message);
+                navigate("/login");
+            }
+        } catch (error) {
+            console.error("Logout failed:", error);
+        }
     };
 
     return (

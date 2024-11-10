@@ -155,12 +155,10 @@ app.post("/signup", async (req, res) => {
             httpOnly: false,
             secure: true,
             sameSite: "None",
-            domain: ".vercel.app", // Ya specific domain set karein agar alag subdomains hain
-            path: "/",
         });
 
         // Send success response with newly created user data
-        res.status(201).json({ message: "User signed up successfully", success: true, user });
+        res.status(201).json({ message: "User signed up successfully", success: true, user, token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error", success: false });
