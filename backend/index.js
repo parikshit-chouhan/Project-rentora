@@ -558,9 +558,15 @@ app.get("/verify/:orderId/:userId/:id", async (req, res) => {
 
 // logout
 app.post("/logout", (req, res) => {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+        path: "/",              // Make sure it applies to all paths
+        domain: ".vercel.app",  // Set domain if frontend is on Vercel
+        secure: true,           // Ensure it’s sent only over HTTPS in production
+        sameSite: "None"        // Allow cross-origin cookie deletion
+    });
     return res.status(200).json({ message: "User logged out successfully", success: true });
 });
+
 
 
 

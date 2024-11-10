@@ -163,7 +163,7 @@ const ListingDetails = () => {
         try {
             const response = await axios.delete(`https://rentora-c5dt.onrender.com/listing/${id}`, {
                 headers: {
-                    Authorization: authToken,
+                    Authorization: `Bearer ${authToken}`,
                 },
             });
 

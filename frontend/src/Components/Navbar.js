@@ -12,7 +12,9 @@ function Navbar() {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {}, { withCredentials: true });
+            const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {
+
+            }, { withCredentials: true });
             const { success, message } = response.data;
 
             if (success) {
@@ -20,7 +22,9 @@ function Navbar() {
                 localStorage.removeItem('user_id');
                 localStorage.removeItem('token');
                 handleSuccess(message);
-                navigate("/login");
+                setTimeout(() => {
+                    navigate("/");
+                }, 1000);
             }
         } catch (error) {
             console.error("Logout failed:", error);
