@@ -119,7 +119,7 @@ const ListingDetails = () => {
                 { userId },
                 {
                     headers: {
-                        Authorization: `Bearer ${cookies.token}`,
+                        Authorization: authToken,
                     },
                 }
             );
@@ -163,7 +163,7 @@ const ListingDetails = () => {
         try {
             const response = await axios.delete(`https://rentora-c5dt.onrender.com/listing/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${cookies.token}`,
+                    Authorization: authToken,
                 },
             });
 

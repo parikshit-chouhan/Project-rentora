@@ -42,7 +42,7 @@ const EditListing = () => {
             try {
                 const response = await axios.get(`http://localhost:3002/listings/${id}`, {
                     headers: {
-                        'Authorization': `Bearer ${cookies.token}`,
+                        'Authorization': authToken,
                     },
                 });
                 setFormData(response.data.listing);

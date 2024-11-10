@@ -16,15 +16,15 @@ function SeeYourListing() {
         // Check if the user is logged in by verifying the cookie
         if (authToken) {
             const id = localStorage.getItem('user_id'); // Get the user ID from localStorage
-    
+
             const fetchListing = async () => {
                 try {
                     const res = await axios.get(`https://rentora-c5dt.onrender.com/seeListing/${id}`, {
                         headers: {
-                            'Authorization': `Bearer ${cookies.token}`,
+                            'Authorization': authToken,
                         }
                     });
-                    
+
                     if (res.data.status) {
                         setAllListings(res.data.allListings);
                     } else {
@@ -36,15 +36,15 @@ function SeeYourListing() {
                     setLoading(false); // Stop loading indicator after fetching
                 }
             };
-    
+
             fetchListing(); // Call the async function to fetch listings
         } else {
             handleError("Please log in to see your listings.");
             navigate('/login'); // Redirect to login page if not logged in
         }
     }, [authToken, navigate]); // Re-run effect if token changes
-    
-    
+
+
 
     return (
         <div className="explore-container">
