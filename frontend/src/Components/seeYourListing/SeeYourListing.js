@@ -14,7 +14,7 @@ function SeeYourListing() {
 
     useEffect(() => {
         // Check if the user is logged in by verifying the cookie
-        if (cookies.token) {
+        if (token) {
             const id = localStorage.getItem('user_id'); // Get the user ID from localStorage
     
             const fetchListing = async () => {
