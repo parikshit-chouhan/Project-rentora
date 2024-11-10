@@ -30,7 +30,7 @@ const CreateListing = () => {
         const varifyCookie = () => {
             if (!token) {
                 handleError("Please log in to add new listing");
-                setTimeout(() => {
+               return setTimeout(() => {
                     navigate("/login");
                 }, 1000);
             } else {
