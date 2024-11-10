@@ -199,7 +199,7 @@ app.post("/login", async (req, res) => {
         });
 
         console.log("Token from frontend", token)
-        res.status(200).json({ message: "User logged in successfully", success: true, user });
+        res.status(200).json({ message: "User logged in successfully", success: true, user, token });
     } catch (error) {
         console.error(error);
     }

@@ -43,7 +43,7 @@ function Login() {
                 localStorage.setItem('token', token);
                 localStorage.setItem('user_id', user._id);
                 console.log("username", user.username)
-                console.log("userid", user.user._id)
+                console.log("userid", user._id)
                 handleSuccess(message);
                 setTimeout(() => {
                     navigate('/');
