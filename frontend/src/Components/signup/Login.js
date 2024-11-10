@@ -12,6 +12,7 @@ function Login() {
         number: '',  // Add the number field to state
     });
     const [loading, setLoading] = useState(false);
+    const [cookies] = useCookies(['token']); // Get the token cookie
     const { email, password, number } = inputValue;
 
     const handleOnChange = (e) => {
@@ -36,8 +37,13 @@ function Login() {
             );
             const { success, message, user } = data;
             if (success) {
+                
+                console.log("data after login request", data);
+                console.log("cookie after login request", cookies.token);
                 localStorage.setItem('username', user.username);
                 localStorage.setItem('user_id', user._id);
+                console.log("username", user.username)
+                console.log("userid", user.user._id)
                 handleSuccess(message);
                 setTimeout(() => {
                     navigate('/');
@@ -77,7 +83,7 @@ function Login() {
                                 onChange={handleOnChange}
                                 required
                             />
-                        </div>             
+                        </div>
                         <div className="mb-4">
                             <label htmlFor="password" className="form-label" style={{ fontWeight: 'bold' }}>Enter your Password</label>
                             <input

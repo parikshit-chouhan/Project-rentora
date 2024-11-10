@@ -6,8 +6,9 @@ body {
   flex-direction: column;
   height: 100vh !important;
   min-height: 100vh;
+  overflow-x: hidden;
 }
- 
+
 
 .nav-link {
   margin-left: 30px;
@@ -46,19 +47,23 @@ body {
   margin-left: 5rem;
 }
 
-.container, .container-fluid {
+.container,
+.container-fluid {
   width: 100% !important;
   padding: 0 !important;
-  margin: 0 auto !important; /* Center the container */
+  margin: 0 auto !important;
+  /* Center the container */
 }
 
 
 .navbar {
-  position: sticky !important; /* Keep the navbar at the top */
+  position: sticky !important;
+  /* Keep the navbar at the top */
   top: 0 !important;
   height: 5rem;
   background-color: white;
-  z-index: 1210; /* Ensure it stays above other content */
+  z-index: 1210;
+  /* Ensure it stays above other content */
 }
 
 
@@ -104,7 +109,8 @@ body {
   /* background-color:  #009688 !important; */
   color: white !important;
 }
-.dropdown-item:hover{
+
+.dropdown-item:hover {
   border-radius: 25px !important;
   background-color: #d62828 !important;
   color: white !important;
@@ -156,13 +162,17 @@ body {
 
 /* show page */
 .card {
-  margin: 20px auto; /* Center the card */
-  max-width: 900px; /* Set a larger maximum width for the card */
+  margin: 20px auto;
+  /* Center the card */
+  max-width: 900px;
+  /* Set a larger maximum width for the card */
 }
 
 .card-img-top {
-  height: 20rem; /* Increase height */
-  object-fit: cover; /* Maintain aspect ratio */
+  height: 20rem;
+  /* Increase height */
+  object-fit: cover;
+  /* Maintain aspect ratio */
 }
 
 
@@ -401,7 +411,8 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 30px; /* Space between cards */
+  gap: 30px;
+  /* Space between cards */
 }
 
 /* signup */
@@ -430,63 +441,62 @@ input.form-control {
 /* new page */
 
 .new-container {
-    background-color: #fdfdff;
-    padding: 40px;
-    border-radius: 10px;
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.349);
-    margin-top: 30px;
+  background-color: #fdfdff;
+  padding: 40px;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.349);
+  margin-top: 30px;
 }
 
 .new-h3 {
-    color: #e63946;
-    /* Rentora brand color */
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 30px;
+  color: #e63946;
+  /* Rentora brand color */
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .new-lbl {
-    font-weight: 600;
-    color: #343a40;
+  font-weight: 600;
+  color: #343a40;
 }
 
 
 
 .new-btn {
-    background-color: #e63946;
-    border-color: #e63946;
+  background-color: #e63946;
+  border-color: #e63946;
 }
 
 .new-btn:hover {
-    background-color: #c92d3a;
-    border-color: #c92d3a;
+  background-color: #c92d3a;
+  border-color: #c92d3a;
 }
 
 .new-btn {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 50px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .new-btn:hover {
-    background-color: #d32f2f;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  background-color: #d32f2f;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
 
 .new-ctr {
-    height: 45px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 8px;
+  height: 45px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
 }
 
 
 .new-row {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-

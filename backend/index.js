@@ -65,7 +65,7 @@ function generateOrderId() {
 // To allow frontend port request to ouer server 
 const cors = require("cors");
 
-const allowedOrigins = ['https://rentora.vercel.app']; // Allow the specific frontend URL
+const allowedOrigins = ['https://rentora.vercel.app', "http://localhost:3000"]; // Allow the specific frontend URL
 
 const corsOptions = {
     origin: function (origin, callback) {
@@ -173,6 +173,7 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
 
     try {
+        console.log("req recieved for login for user",)
         const { email, password } = req.body;
         // Check if the user is already logged in 
         if (!email || !password) {
@@ -191,8 +192,9 @@ app.post("/login", async (req, res) => {
         if (!auth) {
             return res.json({ message: 'Incorrect password or email' });
         }
-
+        console.log(user)
         const token = createSecretToken(user._id);
+        console.log("Token from frontend", token)
         res.cookie("token", token, {
             withCredentials: true,
             httpOnly: true,
