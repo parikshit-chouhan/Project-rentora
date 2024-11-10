@@ -9,7 +9,7 @@ function SeeYourBooking() {
     const [loading, setLoading] = useState(true);
     const [cookies] = useCookies(['token']);
     const userId = localStorage.getItem('user_id'); // Get user ID from localStorage
--    const authToken = localStorage.getItem('token');
+    const authToken = localStorage.getItem('token');
 
     const navigate = useNavigate();
 
