@@ -39,10 +39,11 @@ function Signup() {
                 { ...inputValue },
                 { withCredentials: true }
             );
-            const { success, message, user } = data;
+            const { success, message, user, token } = data;
             if (success) {
                 handleSuccess(message);
                 localStorage.setItem('username', user.username);
+                localStorage.setItem('token', token);
                 localStorage.setItem('user_id', user._id);
                 setTimeout(() => {
                     navigate('/');

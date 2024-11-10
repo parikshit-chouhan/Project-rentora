@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,7 +12,6 @@ function Login() {
         number: '',  // Add the number field to state
     });
     const [loading, setLoading] = useState(false);
-    const [cookies] = useCookies(['token']); // Get the token cookie
     const { email, password, number } = inputValue;
 
     const handleOnChange = (e) => {
@@ -36,12 +34,13 @@ function Login() {
                 { email, password, number },
                 { withCredentials: true }
             );
-            const { success, message, user } = data;
+            const { success, message, user, token } = data;
             if (success) {
                 
                 console.log("data after login request", data);
-                console.log("cookie after login request", cookies.token);
+                console.log("cookie after login request", token);
                 localStorage.setItem('username', user.username);
+                localStorage.setItem('token', token);
                 localStorage.setItem('user_id', user._id);
                 console.log("username", user.username)
                 console.log("userid", user.user._id)

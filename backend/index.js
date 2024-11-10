@@ -151,17 +151,9 @@ app.post("/signup", async (req, res) => {
         // Create token for the new user
         const token = createSecretToken(user._id);
 
-        // Set token in cookie with secure and httpOnly options
-        res.cookie("token", token, {
-            withCredentials: true,  //to send cookies through response
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "None",
-            maxAge: 24 * 60 * 60 * 1000,
-        });
 
         // Send success response with newly created user data
-        res.status(201).json({ message: "User signed up successfully", success: true, user });
+        res.status(201).json({ message: "User signed up successfully", success: true, user, token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Internal server error", success: false });
@@ -195,14 +187,7 @@ app.post("/login", async (req, res) => {
         console.log(user)
         const token = createSecretToken(user._id);
         console.log("Token from frontend", token)
-        res.cookie("token", token, {
-            withCredentials: true,
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "None",
-            maxAge: 24 * 60 * 60 * 1000,
-        });
-        res.status(200).json({ message: "User logged in successfully", success: true, user });
+        res.status(200).json({ message: "User logged in successfully", success: true, user, token });
     } catch (error) {
         console.error(error);
     }

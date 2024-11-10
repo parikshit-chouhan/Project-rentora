@@ -5,7 +5,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
 function Navbar() {
-    const [cookies] = useCookies(['token']);
     const navigate = useNavigate();
     const username = localStorage.getItem('username');
 
@@ -56,7 +55,7 @@ function Navbar() {
                             <Link className="nav-link" to="/addNewHome">Add New Home</Link>
                             <Link className="nav-link me-4 " to="/about">About Us</Link>
 
-                            {cookies.token && username && username !== 'undefined' ? (
+                            { username && username !== 'undefined' ? (
                                 <div className="nav-item dropdown">
                                     <button
                                         className="btn dropdown-toggle join-btn"
