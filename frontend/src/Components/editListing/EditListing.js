@@ -10,6 +10,7 @@ const EditListing = () => {
     const navigate = useNavigate();
     const [cookies] = useCookies(['token']);
     const [loading, setLoading] = useState(false); // Loading state
+    const token = localStorage.getItem('token', token);
     const [formData, setFormData] = useState({
         title: '',
         houseno: '',
@@ -29,7 +30,7 @@ const EditListing = () => {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     useEffect(() => {
-        if (!cookies.token) {
+        if (!token) {
             handleError("Please log in to edit listing");
             navigate("/login");
             return;
@@ -39,7 +40,7 @@ const EditListing = () => {
             try {
                 const response = await axios.get(`http://localhost:3002/listings/${id}`, {
                     headers: {
-                        'Authorization': `Bearer ${cookies.token}`,
+                        'Authorization': token,
                     },
                 });
                 setFormData(response.data.listing);
@@ -50,7 +51,7 @@ const EditListing = () => {
         };
 
         fetchListing();
-    }, [cookies.token, id]);
+    }, [token, id]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;

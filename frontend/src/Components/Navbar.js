@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { useCookies } from "react-cookie";
+
 
 function Navbar() {
     const navigate = useNavigate();
@@ -11,25 +11,18 @@ function Navbar() {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     const handleLogout = async () => {
-        try {
-            const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {}, { withCredentials: true });
-            const { success, message } = response.data;
 
-            if (success) {
-                localStorage.removeItem('username');
-                localStorage.removeItem('user_id');
-                handleSuccess(message);
-                navigate("/login");
-            }
-        } catch (error) {
-            console.error("Logout failed:", error);
-        }
+        localStorage.removeItem('username');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('token');
+        handleSuccess("User logged out successfull");
+        navigate("/");
     };
 
     return (
-        
+
         <div>
-            
+
             <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand ms-3">
@@ -55,7 +48,7 @@ function Navbar() {
                             <Link className="nav-link" to="/addNewHome">Add New Home</Link>
                             <Link className="nav-link me-4 " to="/about">About Us</Link>
 
-                            { username && username !== 'undefined' ? (
+                            {username && username !== 'undefined' ? (
                                 <div className="nav-item dropdown">
                                     <button
                                         className="btn dropdown-toggle join-btn"

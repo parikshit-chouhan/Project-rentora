@@ -17,6 +17,7 @@ const ListingDetails = () => {
     const [showConfirm, setShowConfirm] = useState(false);
 
     const userId = localStorage.getItem('user_id');
+    const token = localStorage.getItem('token', token);
     const navigate = useNavigate();
 
     const ConfirmationDialog = ({ onConfirm, onCancel }) => (
@@ -105,7 +106,7 @@ const ListingDetails = () => {
     };
 
     const handleBookNow = async () => {
-        if (!cookies.token) {
+        if (!token) {
             toast.error("Please log in to book this listing");
             return;
         }
@@ -118,7 +119,7 @@ const ListingDetails = () => {
                 { userId },
                 {
                     headers: {
-                        Authorization: `Bearer ${cookies.token}`,
+                        Authorization: token,
                     },
                 }
             );
@@ -162,7 +163,7 @@ const ListingDetails = () => {
         try {
             const response = await axios.delete(`https://rentora-c5dt.onrender.com/listing/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${cookies.token}`,
+                    Authorization: token,
                 },
             });
 
@@ -215,7 +216,7 @@ const ListingDetails = () => {
                                 </button>
                             </p>
 
-                            {userId && listing.owner._id === userId && cookies.token ? (
+                            {userId && listing.owner._id === userId && token ? (
                                 <div>
                                     <button className="btn btn-danger mb-2 me-2" onClick={handleEdit}>Edit</button>
                                     <button className="btn btn-dark ms-2" onClick={() => setShowConfirm(true)}>Delete</button>

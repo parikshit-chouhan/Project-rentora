@@ -545,11 +545,6 @@ app.get("/verify/:orderId/:userId/:id", async (req, res) => {
 
 
 
-// logout
-app.post("/logout", (req, res) => {
-    res.clearCookie("token");
-    return res.status(200).json({ message: "User logged out successfully", success: true });
-});
 
 
 
