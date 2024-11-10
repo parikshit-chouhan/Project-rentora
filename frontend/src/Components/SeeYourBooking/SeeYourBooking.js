@@ -9,14 +9,18 @@ function SeeYourBooking() {
     const [loading, setLoading] = useState(true);
     const [cookies] = useCookies(['token']);
     const userId = localStorage.getItem('user_id'); // Get user ID from localStorage
-    const token = localStorage.getItem('token', token);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBookings = async () => {
+            if (!cookies.token) {
+                toast.error("Please log in to see your bookings.");
+                return;
+            }
+
             try {
                 const response = await axios.get(`https://rentora-c5dt.onrender.com/getBooking/${userId}`, {
-                    headers: { 'Authorization': cookies.token }
+                    headers: { 'Authorization': `Bearer ${cookies.token}` }
                 });
 
                 if (response.data.success) {

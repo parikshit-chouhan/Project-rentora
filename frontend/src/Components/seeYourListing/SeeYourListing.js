@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCookies } from "react-cookie";
+import { useCookies } from 'react-cookie';
 import { toast, ToastContainer } from 'react-toastify';
 
 function SeeYourListing() {
     const [allListings, setAllListings] = useState([]);
     const [loading, setLoading] = useState(true); // Add loading state
-    const [cookies] = useCookies(['token']);
-       const navigate = useNavigate();
+    const [cookies] = useCookies(['token']); // Get the token cookie
+    const navigate = useNavigate();
 
     const handleError = (msg) => toast.error(msg, { position: "top-right" });
 
@@ -21,7 +21,7 @@ function SeeYourListing() {
                 try {
                     const res = await axios.get(`https://rentora-c5dt.onrender.com/seeListing/${id}`, {
                         headers: {
-                            'Authorization': cookies.token,
+                            'Authorization': `Bearer ${cookies.token}`,
                         }
                     });
                     

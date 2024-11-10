@@ -26,6 +26,20 @@ const CreateListing = () => {
     const handleError = (msg) => toast.error(msg, { position: "top-right" });
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
+    useEffect(() => {
+        // Token check
+        const varifyCookie = () => {
+            if (!cookies.token) {
+                handleError("Please log in to add new listing");
+                setTimeout(() => {
+                    navigate("/login");
+                }, 1000);
+            } else {
+                setIsVerified(true); // Token verified
+            }
+        };
+        varifyCookie();
+    }, [cookies.token, navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
@@ -44,10 +58,9 @@ const CreateListing = () => {
         }
 
         try {
-            const response = await axios.post(`https://rentora-c5dt.onrender.com`, formDataToSend, {
+            const response = await axios.post('https://rentora-c5dt.onrender.com/addListing', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': cookies.token,
                 },
                 withCredentials: true,
             });
