@@ -52,6 +52,7 @@ function Login() {
                 handleError(message);
             }
         } catch (error) {
+            console.log(error)
             const errorMessage = error.response?.data?.message || 'An error occurred. Please try again.';
             handleError(errorMessage);
         } finally {

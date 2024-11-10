@@ -65,25 +65,30 @@ function generateOrderId() {
 // To allow frontend port request to ouer server 
 const cors = require("cors");
 
-const allowedOrigins = ['https://rentora.vercel.app', "http://localhost:3000"]; // Allow the specific frontend URL
+// const allowedOrigins = ['https://rentora.vercel.app', "http://localhost:3000"]; // Allow the specific frontend URL
 
-const corsOptions = {
-    origin: function (origin, callback) {
-        // Check if origin is in the allowed list
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true, // Allow credentials (cookies, authorization headers)
-};
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         // Check if origin is in the allowed list
+//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true, // Allow credentials (cookies, authorization headers)
+// };
 
-// Apply the CORS middleware
-app.use(cors(corsOptions));
+// // Apply the CORS middleware
+// app.use(cors(corsOptions));
 
+
+app.use(cors({
+    origin: '*', // Temporarily allow all origins for testing
+    credentials: true,  // Allow credentials (cookies, authorization headers, etc.)
+}));
 
 
 // for password encryption and dcryption
