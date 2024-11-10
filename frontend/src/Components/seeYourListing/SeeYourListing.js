@@ -16,16 +16,17 @@ function SeeYourListing() {
         // Check if the user is logged in by verifying the cookie
         if (authToken) {
             const id = localStorage.getItem('user_id'); // Get the user ID from localStorage
-
+            console.log("see your listing", id)
             const fetchListing = async () => {
                 try {
                     const res = await axios.get(`https://rentora-c5dt.onrender.com/seeListing/${id}`, {
                         headers: {
-                            'Authorization': authToken,
+                            'Authorization': `Bearer ${authToken}`,
                         }
                     });
 
                     if (res.data.status) {
+                        console.log(res.data.allListings)
                         setAllListings(res.data.allListings);
                     } else {
                         console.log("No listings found for this user");

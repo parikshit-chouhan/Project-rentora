@@ -119,7 +119,7 @@ const ListingDetails = () => {
                 { userId },
                 {
                     headers: {
-                        Authorization: authToken,
+                        Authorization: `Bearer ${authToken}`,
                     },
                 }
             );

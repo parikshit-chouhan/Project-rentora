@@ -333,6 +333,7 @@ app.delete('/listing/:id', userVerification, async (req, res) => {
 app.get('/seeListing/:id', userVerification, async (req, res) => {
     try {
         const id = req.params.id;
+        console.log("see your listing", id)
         const listings = await listing.find({ owner: id }); // Filter listings by owner ID
         if (listings.length > 0) {
             return res.json({ status: true, allListings: listings });

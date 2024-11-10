@@ -40,9 +40,9 @@ const EditListing = () => {
 
         const fetchListing = async () => {
             try {
-                const response = await axios.get(`http://localhost:3002/listings/${id}`, {
+                const response = await axios.get(`https://rentora-c5dt.onrender.com/listings/${id}`, {
                     headers: {
-                        'Authorization': authToken,
+                        'Authorization': `Bearer ${authToken}`, 
                     },
                 });
                 setFormData(response.data.listing);

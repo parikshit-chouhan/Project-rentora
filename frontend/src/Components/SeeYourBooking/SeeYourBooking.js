@@ -22,7 +22,7 @@ function SeeYourBooking() {
 
             try {
                 const response = await axios.get(`https://rentora-c5dt.onrender.com/getBooking/${userId}`, {
-                    headers: { 'Authorization': authToken }
+                    headers: { 'Authorization': `Bearer ${authToken}`,  }
                 });
 
                 if (response.data.success) {
