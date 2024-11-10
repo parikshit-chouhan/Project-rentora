@@ -210,7 +210,11 @@ app.post("/login", async (req, res) => {
 app.post('/addListing', userVerification, upload.single('image'), async (req, res) => {
     // console.log("Incoming Request URL:", req.url);
     // console.log(req.user)
-    // let{title, houseno, availablerooms, facilities, price, description, status, address, city, state, country, image, }
+    let { title, houseno, availablerooms, facilities, price, description, status, address, city, state, country, } = req.body
+    if (!title || !houseno || !availablerooms || !facilities || !price || !description || !status || !address || !city || !state || !country) {
+        return res.json({ message: 'All fields are required' });
+    }
+
     try {
         // Upload image to Cloudinary
         const result = await cloudinary.uploader.upload(req.file.path);
@@ -247,20 +251,12 @@ app.post('/addListing', userVerification, upload.single('image'), async (req, re
 
 // edit listing
 app.put('/listing/:id', upload.single('image'), async (req, res) => {
+    const { title, houseno, availablerooms, facilities, price, description, status, address, city, state, country } = req.body
+    if (!title || !houseno || !availablerooms || !facilities || !price || !description || !status || !address || !city || !state || !country) {
+        return res.json({ message: 'All fields are required' });
+    }
     const { id } = req.params;
-    const {
-        title,
-        houseno,
-        availablerooms,
-        facilities,
-        price,
-        description,
-        status,
-        address,
-        city,
-        state,
-        country,
-    } = req.body;
+
 
     try {
         // Existing listing ko dhoondho
@@ -560,7 +556,7 @@ app.get("/verify/:orderId/:userId/:id", async (req, res) => {
 app.post("/logout", (req, res) => {
     res.clearCookie("token", {
         path: "/",              // Make sure it applies to all paths
-        domain: ".vercel.app",  // Set domain if frontend is on Vercel
+        domain: "rentora.vercel.app",  // Set domain if frontend is on Vercel
         secure: true,           // Ensure it’s sent only over HTTPS in production
         sameSite: "None"        // Allow cross-origin cookie deletion
     });

@@ -81,8 +81,7 @@ function Login() {
                                 className="form-control"
                                 placeholder="Enter your Email"
                                 value={email}
-                                onChange={handleOnChange}
-                                required
+                                onChange={handleOnChange}                                
                             />
                         </div>
                         <div className="mb-4">
@@ -94,8 +93,7 @@ function Login() {
                                 className="form-control"
                                 placeholder="Enter your Password"
                                 value={password}
-                                onChange={handleOnChange}
-                                required
+                                onChange={handleOnChange}                                
                             />
                         </div>
                         <div className="mb-4 d-flex justify-content-between align-items-center">

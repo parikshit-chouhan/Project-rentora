@@ -98,11 +98,11 @@ const CreateListing = () => {
                             <div className="row mt-4">
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="title" className="form-label new-lbl">Title</label>
+                                        <label htmlFor="title" className="form-label">Title</label>
                                         <input
                                             type="text"
                                             name="title"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.title}
                                             onChange={handleChange}
@@ -111,11 +111,11 @@ const CreateListing = () => {
                                 </div>
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="houseno" className="form-label new-lbl">House/Plot Number</label>
+                                        <label htmlFor="houseno" className="form-label">House/Plot Number</label>
                                         <input
                                             type="text"
                                             name="houseno"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.houseno}
                                             onChange={handleChange}
@@ -126,11 +126,11 @@ const CreateListing = () => {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="availablerooms" className="form-label new-lbl">Available Rooms</label>
+                                        <label htmlFor="availablerooms" className="form-label">Available Rooms</label>
                                         <input
                                             type="text"
                                             name="availablerooms"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.availablerooms}
                                             onChange={handleChange}
@@ -139,11 +139,11 @@ const CreateListing = () => {
                                 </div>
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="facilities" className="form-label new-lbl">Facilities</label>
+                                        <label htmlFor="facilities" className="form-label">Facilities</label>
                                         <input
                                             type="text"
                                             name="facilities"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.facilities}
                                             onChange={handleChange}
@@ -154,11 +154,11 @@ const CreateListing = () => {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="price" className="form-label new-lbl">Rent</label>
+                                        <label htmlFor="price" className="form-label">Rent</label>
                                         <input
                                             type="text"
                                             name="price"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.price}
                                             onChange={handleChange}
@@ -167,11 +167,11 @@ const CreateListing = () => {
                                 </div>
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="image" className="form-label new-lbl">Upload Image</label>
+                                        <label htmlFor="image" className="form-label">Upload Image</label>
                                         <input
                                             type="file"
                                             name="image"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             onChange={handleChange}
                                         />
@@ -181,10 +181,10 @@ const CreateListing = () => {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="description" className="form-label new-lbl">Description</label>
+                                        <label htmlFor="description" className="form-label">Description</label>
                                         <textarea
                                             name="description"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.description}
                                             onChange={handleChange}
@@ -193,7 +193,7 @@ const CreateListing = () => {
                                 </div>
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="status" className="form-label new-lbl">Status</label>
+                                        <label htmlFor="status" className="form-label">Status</label>
                                         <select
                                             className="form-select"
                                             name="status"
@@ -208,11 +208,11 @@ const CreateListing = () => {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="address" className="form-label new-lbl">Address</label>
+                                        <label htmlFor="address" className="form-label">Address</label>
                                         <input
                                             type="text"
                                             name="address"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.address}
                                             onChange={handleChange}
@@ -221,11 +221,11 @@ const CreateListing = () => {
                                 </div>
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="city" className="form-label new-lbl">City</label>
+                                        <label htmlFor="city" className="form-label">City</label>
                                         <input
                                             type="text"
                                             name="city"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.city}
                                             onChange={handleChange}
@@ -236,11 +236,11 @@ const CreateListing = () => {
                             <div className="row">
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="state" className="form-label new-lbl">State</label>
+                                        <label htmlFor="state" className="form-label">State</label>
                                         <input
                                             type="text"
                                             name="state"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.state}
                                             onChange={handleChange}
@@ -249,11 +249,11 @@ const CreateListing = () => {
                                 </div>
                                 <div className="col-6">
                                     <div className="mb-3">
-                                        <label htmlFor="country" className="form-label new-lbl">Country</label>
+                                        <label htmlFor="country" className="form-label">Country</label>
                                         <input
                                             type="text"
                                             name="country"
-                                            className="form-control new-ctr"
+                                            className="form-control"
                                             required
                                             value={formData.country}
                                             onChange={handleChange}

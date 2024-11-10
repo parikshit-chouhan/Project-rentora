@@ -24,18 +24,12 @@ const listingSchema = new Schema({
     country: {
         type: String,
     },
-    reviews: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Review"
-        }
-    ],
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User"
     },
     houseno: {
-        type: Number
+        type: String
     },
     availablerooms: {
         type: String

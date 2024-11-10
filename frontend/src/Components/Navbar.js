@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function Navbar() {
     const navigate = useNavigate();
+    const [isLogout, setIsLogout] = useState();
     const username = localStorage.getItem('username');
 
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
@@ -13,8 +14,8 @@ function Navbar() {
     const handleLogout = async () => {
         try {
             const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {
-
             }, { withCredentials: true });
+            setIsLogout(false)
             const { success, message } = response.data;
 
             if (success) {
@@ -22,6 +23,7 @@ function Navbar() {
                 localStorage.removeItem('user_id');
                 localStorage.removeItem('token');
                 handleSuccess(message);
+                setIsLogout(true)
                 setTimeout(() => {
                     navigate("/");
                 }, 1000);
@@ -34,7 +36,6 @@ function Navbar() {
     return (
 
         <div>
-
             <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand ms-3">
@@ -96,6 +97,7 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
+            {!isLogout && ( <p className='text-center' >Please Wait..</p>)}
             <ToastContainer />
         </div>
     );

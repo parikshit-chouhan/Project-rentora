@@ -82,7 +82,7 @@ function Signup() {
                                 placeholder="Enter your username"
                                 value={username} 
                                 onChange={handleOnChange} 
-                                required
+                                
                             />
                         </div>
                         <div className="mb-4">
@@ -95,7 +95,7 @@ function Signup() {
                                 placeholder="Enter your Email"
                                 value={email} 
                                 onChange={handleOnChange} 
-                                required
+                                
                             />
                         </div>
                         <div className="mb-4">
@@ -110,7 +110,7 @@ function Signup() {
                                 onChange={handleOnChange}
                                 minLength="10"
                                 maxLength="10"
-                                required
+                                
                             />
                         </div>
                         <div className="mb-4">
@@ -123,7 +123,7 @@ function Signup() {
                                 placeholder="Create your password"
                                 value={password} 
                                 onChange={handleOnChange} 
-                                required
+                                
                             />
                         </div>
                         <div className="mb-4 signp-bottom">
