@@ -157,7 +157,7 @@ app.post("/signup", async (req, res) => {
             httpOnly: false,
             secure: process.env.NODE_ENV === "production",
             sameSite: "None",
-            domain: "https://rentora.vercel.app/", 
+            domain: ".vercel.app",
             maxAge: 24 * 60 * 60 * 1000,
         });
 
@@ -197,11 +197,11 @@ app.post("/login", async (req, res) => {
         const token = createSecretToken(user._id);
         console.log("Token from frontend", token)
         res.cookie("token", token, {
-            withCredentials: true,  
+            withCredentials: true,
             httpOnly: false,
             secure: process.env.NODE_ENV === "production",
             sameSite: "None",
-            domain: "https://rentora.vercel.app/", 
+            domain: ".vercel.app",
             maxAge: 24 * 60 * 60 * 1000,
         });
         res.status(200).json({ message: "User logged in successfully", success: true, user });
