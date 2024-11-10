@@ -155,6 +155,8 @@ app.post("/signup", async (req, res) => {
             httpOnly: false,
             secure: true,
             sameSite: "None",
+            domain: ".vercel.app", // Ya specific domain set karein agar alag subdomains hain
+            path: "/",
         });
 
         // Send success response with newly created user data

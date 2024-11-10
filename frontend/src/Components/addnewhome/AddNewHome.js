@@ -27,9 +27,23 @@ const CreateListing = () => {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     useEffect(() => {
+        const getTokenFromCookies = () => {
+            const cookies = document.cookie.split('; ');
+            const token = cookies.find(cookie => cookie.startsWith('token='));
+
+            if (token) {
+                return token.split('=')[1]; // Extract the token value
+            } else {
+                return null;
+            }
+        };
+
+        const token = getTokenFromCookies();
+        console.log(token); // Token ko print karein
+
         // Token check
         const varifyCookie = () => {
-            if (!cookies.token) {
+            if (token) {
                 handleError("Please log in to add new listing");
                 setTimeout(() => {
                     navigate("/login");
@@ -39,7 +53,7 @@ const CreateListing = () => {
             }
         };
         varifyCookie();
-    }, [cookies.token, navigate]);
+    }, [token, navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
