@@ -103,7 +103,6 @@ const CreateListing = () => {
                                             type="text"
                                             name="title"
                                             className="form-control"
-                                            required
                                             value={formData.title}
                                             onChange={handleChange}
                                         />
@@ -116,7 +115,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="houseno"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.houseno}
                                             onChange={handleChange}
                                         />
@@ -131,7 +130,6 @@ const CreateListing = () => {
                                             type="text"
                                             name="availablerooms"
                                             className="form-control"
-                                            required
                                             value={formData.availablerooms}
                                             onChange={handleChange}
                                         />
@@ -144,7 +142,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="facilities"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.facilities}
                                             onChange={handleChange}
                                         />
@@ -159,7 +157,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="price"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.price}
                                             onChange={handleChange}
                                         />
@@ -172,7 +170,7 @@ const CreateListing = () => {
                                             type="file"
                                             name="image"
                                             className="form-control"
-                                            required
+                                            
                                             onChange={handleChange}
                                         />
                                     </div>
@@ -185,7 +183,7 @@ const CreateListing = () => {
                                         <textarea
                                             name="description"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.description}
                                             onChange={handleChange}
                                         />
@@ -213,7 +211,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="address"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.address}
                                             onChange={handleChange}
                                         />
@@ -226,7 +224,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="city"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.city}
                                             onChange={handleChange}
                                         />
@@ -241,7 +239,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="state"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.state}
                                             onChange={handleChange}
                                         />
@@ -254,7 +252,7 @@ const CreateListing = () => {
                                             type="text"
                                             name="country"
                                             className="form-control"
-                                            required
+                                            
                                             value={formData.country}
                                             onChange={handleChange}
                                         />

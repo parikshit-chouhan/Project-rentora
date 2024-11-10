@@ -17,7 +17,7 @@ function Navbar() {
             }, { withCredentials: true });
             setIsLogout(false)
             const { success, message } = response.data;
-
+console.log(response.data)
             if (success) {
                 localStorage.removeItem('username');
                 localStorage.removeItem('user_id');
@@ -97,7 +97,7 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
-            {!isLogout && ( <p className='text-center' >Please Wait..</p>)}
+            {isLogout ==="false" && ( <p className='text-center' >Please Wait..</p>)}
             <ToastContainer />
         </div>
     );
