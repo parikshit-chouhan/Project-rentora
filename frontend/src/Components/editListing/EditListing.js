@@ -29,29 +29,7 @@ const EditListing = () => {
     const handleError = (msg) => toast.error(msg, { position: "top-right" });
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
-    useEffect(() => {
-        if (!token) {
-            handleError("Please log in to edit listing");
-            navigate("/login");
-            return;
-        }
-
-        const fetchListing = async () => {
-            try {
-                const response = await axios.get(`http://localhost:3002/listings/${id}`, {
-                    headers: {
-                        'Authorization': token,
-                    },
-                });
-                setFormData(response.data.listing);
-            } catch (error) {
-                console.error("Error fetching listing:", error);
-                handleError("Failed to fetch listing data");
-            }
-        };
-
-        fetchListing();
-    }, [token, id]);
+   
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;

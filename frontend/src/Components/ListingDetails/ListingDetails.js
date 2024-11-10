@@ -106,10 +106,6 @@ const ListingDetails = () => {
     };
 
     const handleBookNow = async () => {
-        if (!token) {
-            toast.error("Please log in to book this listing");
-            return;
-        }
         setIsBooking(true);
 
         try {
@@ -119,7 +115,7 @@ const ListingDetails = () => {
                 { userId },
                 {
                     headers: {
-                        Authorization: token,
+                        Authorization: cookies.token,
                     },
                 }
             );

@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const CreateListing = () => {
     const navigate = useNavigate();
+    const [cookies] = useCookies(['token']);
     const [isVerified, setIsVerified] = useState(false); // State for conditional rendering
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -21,24 +22,10 @@ const CreateListing = () => {
         state: '',
         country: '',
     });
-    const token = localStorage.getItem('token', token);
+
     const handleError = (msg) => toast.error(msg, { position: "top-right" });
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
-    useEffect(() => {
-        // Token check
-        const varifyCookie = () => {
-            if (!token) {
-                handleError("Please log in to add new listing");
-               return setTimeout(() => {
-                    navigate("/login");
-                }, 1000);
-            } else {
-                setIsVerified(true); // Token verified
-            }
-        };
-        varifyCookie();
-    }, [token, navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;
@@ -60,7 +47,7 @@ const CreateListing = () => {
             const response = await axios.post(`https://rentora-c5dt.onrender.com`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'Authorization': token,
+                    'Authorization': cookies.token,
                 },
                 withCredentials: true,
             });

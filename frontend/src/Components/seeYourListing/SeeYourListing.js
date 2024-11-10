@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { useCookies } from "react-cookie";
 import { toast, ToastContainer } from 'react-toastify';
 
 function SeeYourListing() {
     const [allListings, setAllListings] = useState([]);
     const [loading, setLoading] = useState(true); // Add loading state
-    const token = localStorage.getItem('token', token);
-    const navigate = useNavigate();
+    const [cookies] = useCookies(['token']);
+       const navigate = useNavigate();
 
     const handleError = (msg) => toast.error(msg, { position: "top-right" });
 
     useEffect(() => {
         // Check if the user is logged in by verifying the cookie
-        if (token) {
+        if (cookies.token) {
             const id = localStorage.getItem('user_id'); // Get the user ID from localStorage
     
             const fetchListing = async () => {
                 try {
                     const res = await axios.get(`https://rentora-c5dt.onrender.com/seeListing/${id}`, {
                         headers: {
-                            'Authorization': token,
+                            'Authorization': cookies.token,
                         }
                     });
                     
@@ -42,7 +42,7 @@ function SeeYourListing() {
             handleError("Please log in to see your listings.");
             navigate('/login'); // Redirect to login page if not logged in
         }
-    }, [token, navigate]); // Re-run effect if token changes
+    }, [cookies.token, navigate]); // Re-run effect if token changes
     
     
 

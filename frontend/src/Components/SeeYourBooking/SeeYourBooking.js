@@ -14,14 +14,9 @@ function SeeYourBooking() {
 
     useEffect(() => {
         const fetchBookings = async () => {
-            if (!token) {
-                toast.error("Please log in to see your bookings.");
-                return;
-            }
-
             try {
                 const response = await axios.get(`https://rentora-c5dt.onrender.com/getBooking/${userId}`, {
-                    headers: { 'Authorization': token }
+                    headers: { 'Authorization': cookies.token }
                 });
 
                 if (response.data.success) {
@@ -37,7 +32,7 @@ function SeeYourBooking() {
         };
 
         fetchBookings();
-    }, [token, userId]);
+    }, [cookies.token, userId]);
 
     const handleCancel = async (bookingId) => { // Accept bookingId as a parameter
         try {
