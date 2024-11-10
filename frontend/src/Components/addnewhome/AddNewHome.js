@@ -9,7 +9,7 @@ const CreateListing = () => {
     const [cookies] = useCookies(['token']);
     const [isVerified, setIsVerified] = useState(false); // State for conditional rendering
     const [loading, setLoading] = useState(false);
-    const authToken = localStorage.getItem('token', token);
+    const authToken = localStorage.getItem('token');
     const [formData, setFormData] = useState({
         title: '',
         houseno: '',
