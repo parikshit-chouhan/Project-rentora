@@ -157,7 +157,6 @@ app.post("/signup", async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "None",
-            domain: ".vercel.app",
             maxAge: 24 * 60 * 60 * 1000,
         });
 
@@ -201,7 +200,6 @@ app.post("/login", async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "None",
-            domain: ".vercel.app",
             maxAge: 24 * 60 * 60 * 1000,
         });
         res.status(200).json({ message: "User logged in successfully", success: true, user });
