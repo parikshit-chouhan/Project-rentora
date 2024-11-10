@@ -154,9 +154,10 @@ app.post("/signup", async (req, res) => {
         // Set token in cookie with secure and httpOnly options
         res.cookie("token", token, {
             withCredentials: true,  //to send cookies through response
-            httpOnly: false,
+            httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "None",
+            domain: ".vercel.app",
             maxAge: 24 * 60 * 60 * 1000,
         });
 
@@ -197,9 +198,10 @@ app.post("/login", async (req, res) => {
         console.log("Token from frontend", token)
         res.cookie("token", token, {
             withCredentials: true,
-            httpOnly: false,
+            httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "None",
+            domain: ".vercel.app",
             maxAge: 24 * 60 * 60 * 1000,
         });
         res.status(200).json({ message: "User logged in successfully", success: true, user });
