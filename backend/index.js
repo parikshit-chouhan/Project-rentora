@@ -177,10 +177,10 @@ app.post("/login", async (req, res) => {
         if (!email || !password) {
             return res.json({ message: 'All fields are required' });
         }
-        const currToken = req.cookies.token; // Get the token from cookies
-        if (currToken && currToken !== 'undefined') {
-            return res.status(400).json({ message: 'Please Logout to Login again' });
-        }
+        // const currToken = req.cookies.token; // Get the token from cookies
+        // if (currToken && currToken !== 'undefined') {
+        //     return res.status(400).json({ message: 'Please Logout to Login again' });
+        // }
         const user = await User.findOne({ email });
         if (!user) {
             return res.json({ message: 'Incorrect password or email' });

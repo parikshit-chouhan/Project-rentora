@@ -17,6 +17,7 @@ const listingSchema = new Schema({
     },
     price: {
         type: Number,
+        required: [true, "Price must be a number"],
     },
     city: {
         type: String,

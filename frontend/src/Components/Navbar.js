@@ -3,19 +3,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
-
 function Navbar() {
     const navigate = useNavigate();
-    const [isLogout, setIsLogout] = useState();
+    const [loading, setLoading] = useState(false); // Loading state added
     const username = localStorage.getItem('username');
 
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     const handleLogout = async () => {
+        setLoading(true); // Set loading to true when logout is initiated
         try {
             const response = await axios.get("https://rentora-c5dt.onrender.com/logout",
                 { withCredentials: true });
-            setIsLogout(false)
+            setLoading(false); // Set loading to false once response is received
             const { success, message } = response.data;
             console.log(response.data)
             if (success) {
@@ -23,18 +23,17 @@ function Navbar() {
                 localStorage.removeItem('user_id');
                 localStorage.removeItem('token');
                 handleSuccess(message);
-                setIsLogout(true)
                 setTimeout(() => {
                     navigate("/");
                 }, 1000);
             }
         } catch (error) {
+            setLoading(false); // Set loading to false if error occurs
             console.error("Logout failed:", error);
         }
     };
 
     return (
-
         <div>
             <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
                 <div className="container-fluid">
@@ -97,7 +96,7 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
-            {isLogout === "false" && (<p className='text-center' >Please Wait..</p>)}
+            {loading && (<p className='text-center' >Please Wait...</p>)}
             <ToastContainer />
         </div>
     );
