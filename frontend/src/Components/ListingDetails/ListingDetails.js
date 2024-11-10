@@ -15,6 +15,7 @@ const ListingDetails = () => {
     const [error, setError] = useState(null);
     const [isBooking, setIsBooking] = useState(false);
     const [showConfirm, setShowConfirm] = useState(false);
+    const authToken = localStorage.getItem('token');
 
     const userId = localStorage.getItem('user_id');
     const navigate = useNavigate();
@@ -105,7 +106,7 @@ const ListingDetails = () => {
     };
 
     const handleBookNow = async () => {
-        if (!cookies.token) {
+        if (!authToken) {
             toast.error("Please log in to book this listing");
             return;
         }
@@ -215,7 +216,7 @@ const ListingDetails = () => {
                                 </button>
                             </p>
 
-                            {userId && listing.owner._id === userId && cookies.token ? (
+                            {userId && listing.owner._id === userId && authToken ? (
                                 <div>
                                     <button className="btn btn-danger mb-2 me-2" onClick={handleEdit}>Edit</button>
                                     <button className="btn btn-dark ms-2" onClick={() => setShowConfirm(true)}>Delete</button>

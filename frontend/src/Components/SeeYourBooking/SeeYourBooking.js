@@ -9,11 +9,13 @@ function SeeYourBooking() {
     const [loading, setLoading] = useState(true);
     const [cookies] = useCookies(['token']);
     const userId = localStorage.getItem('user_id'); // Get user ID from localStorage
+-    const authToken = localStorage.getItem('token');
+
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBookings = async () => {
-            if (!cookies.token) {
+            if (!authToken) {
                 toast.error("Please log in to see your bookings.");
                 return;
             }
@@ -36,7 +38,7 @@ function SeeYourBooking() {
         };
 
         fetchBookings();
-    }, [cookies.token, userId]);
+    }, [authToken, userId]);
 
     const handleCancel = async (bookingId) => { // Accept bookingId as a parameter
         try {

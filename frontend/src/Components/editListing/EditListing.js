@@ -10,6 +10,7 @@ const EditListing = () => {
     const navigate = useNavigate();
     const [cookies] = useCookies(['token']);
     const [loading, setLoading] = useState(false); // Loading state
+    const authToken = localStorage.getItem('token');
     const [formData, setFormData] = useState({
         title: '',
         houseno: '',
@@ -29,9 +30,11 @@ const EditListing = () => {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     useEffect(() => {
-        if (!cookies.token) {
+        if (!authToken) {
             handleError("Please log in to edit listing");
-            navigate("/login");
+            setTimeout(() => {
+                navigate("/login");
+            }, 1000);
             return;
         }
 
@@ -50,7 +53,7 @@ const EditListing = () => {
         };
 
         fetchListing();
-    }, [cookies.token, id]);
+    }, [authToken, id]);
 
     const handleChange = (e) => {
         const { name, value, type, files } = e.target;

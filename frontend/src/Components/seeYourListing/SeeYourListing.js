@@ -9,12 +9,12 @@ function SeeYourListing() {
     const [loading, setLoading] = useState(true); // Add loading state
     const [cookies] = useCookies(['token']); // Get the token cookie
     const navigate = useNavigate();
-
+    const authToken = localStorage.getItem('token');
     const handleError = (msg) => toast.error(msg, { position: "top-right" });
 
     useEffect(() => {
         // Check if the user is logged in by verifying the cookie
-        if (cookies.token) {
+        if (authToken) {
             const id = localStorage.getItem('user_id'); // Get the user ID from localStorage
     
             const fetchListing = async () => {
@@ -42,7 +42,7 @@ function SeeYourListing() {
             handleError("Please log in to see your listings.");
             navigate('/login'); // Redirect to login page if not logged in
         }
-    }, [cookies.token, navigate]); // Re-run effect if token changes
+    }, [authToken, navigate]); // Re-run effect if token changes
     
     
 
