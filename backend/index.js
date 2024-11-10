@@ -153,7 +153,7 @@ app.post("/signup", async (req, res) => {
         console.log(token)
         res.cookie("token", token, {
             withCredentials: true,
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: "None",
         });
@@ -194,7 +194,7 @@ app.post("/login", async (req, res) => {
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
             withCredentials: true,
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: "None",
         });
