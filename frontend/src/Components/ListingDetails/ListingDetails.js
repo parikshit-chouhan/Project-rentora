@@ -89,7 +89,11 @@ const ListingDetails = () => {
     useEffect(() => {
         const fetchListingDetails = async () => {
             try {
-                const response = await axios.get(`https://rentora-c5dt.onrender.com/listings/${id}`);
+                const response = await axios.get(`https://rentora-c5dt.onrender.com/listings/${id}`, {
+                    headers: {
+                        'Authorization': `Bearer ${authToken}`,
+                    }
+                });
                 setListing(response.data.listing);
                 setLoading(false);
             } catch (err) {
