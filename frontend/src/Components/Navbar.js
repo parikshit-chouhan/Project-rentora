@@ -13,11 +13,11 @@ function Navbar() {
 
     const handleLogout = async () => {
         try {
-            const response = await axios.post("https://rentora-c5dt.onrender.com/logout", {
-            }, { withCredentials: true });
+            const response = await axios.get("https://rentora-c5dt.onrender.com/logout",
+                { withCredentials: true });
             setIsLogout(false)
             const { success, message } = response.data;
-console.log(response.data)
+            console.log(response.data)
             if (success) {
                 localStorage.removeItem('username');
                 localStorage.removeItem('user_id');
@@ -97,7 +97,7 @@ console.log(response.data)
                     </div>
                 </div>
             </nav>
-            {isLogout ==="false" && ( <p className='text-center' >Please Wait..</p>)}
+            {isLogout === "false" && (<p className='text-center' >Please Wait..</p>)}
             <ToastContainer />
         </div>
     );

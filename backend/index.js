@@ -553,7 +553,7 @@ app.get("/verify/:orderId/:userId/:id", async (req, res) => {
 
 
 // logout
-app.post("/logout", (req, res) => {
+app.get("/logout", (req, res) => {
     res.clearCookie("token", {
         path: "/",              // Make sure it applies to all paths
         domain: "rentora.vercel.app",  // Set domain if frontend is on Vercel
