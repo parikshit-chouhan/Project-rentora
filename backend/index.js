@@ -119,7 +119,8 @@ app.get('/allListings', async (req, res) => {
 // to get listing details
 app.get("/listings/:id", async (req, res) => {
     let { id } = req.params; // ID ko params se lete hain
-    const findListing = await listing.findById(id).populate({ path: "reviews", populate: { path: "auther" } }).populate("owner");
+    const findListing = await listing.findById(id).populate("owner");
+
 
     if (!findListing) {
         console.log("not found")
