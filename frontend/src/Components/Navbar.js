@@ -24,7 +24,7 @@ function Navbar() {
                 localStorage.removeItem('token');
                 handleSuccess(message);
                 setTimeout(() => {
-                    navigate("/");
+                    navigate("/login");
                 }, 1000);
             }
         } catch (error) {
@@ -56,9 +56,9 @@ function Navbar() {
 
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto">
-                            <Link className="nav-link" to="/explore">Explore</Link>
-                            <Link className="nav-link" to="/addNewHome">Add New Home</Link>
-                            <Link className="nav-link me-4 " to="/about">About Us</Link>
+                            <Link className="nav-link nav-content" to="/explore">Explore</Link>
+                            <Link className="nav-link nav-content" to="/addNewHome">Add New Home</Link>
+                            <Link className="nav-link nav-content me-4 " to="/about">About Us</Link>
 
                             {username && username !== 'undefined' ? (
                                 <div className="nav-item dropdown">
@@ -90,13 +90,25 @@ function Navbar() {
                                     </ul>
                                 </div>
                             ) : (
-                                <Link className="nav-link join-btn" to="/login">Join Us</Link>
+                                <>
+                                <Link className="nav-link signup-btn" to="/signup">Sign up</Link>
+                                <Link className="nav-link login-btn" to="/login">Log in</Link>
+                            </>
                             )}
                         </div>
                     </div>
                 </div>
             </nav>
-            {loading && (<p className='text-center' >Please Wait...</p>)}
+
+            {/* Loading Spinner */}
+            {loading && (
+                <div className="loading-overlay text-center mt-4 ">
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                    <p>Please Wait...</p>
+                </div>
+            )}
             <ToastContainer />
         </div>
     );

@@ -33,8 +33,6 @@ const ListingDetails = () => {
         </div>
     );
 
-
-
     // Styles for the confirmation dialog
     const dialogOverlayStyle = {
         position: 'fixed',
@@ -84,7 +82,6 @@ const ListingDetails = () => {
         fontSize: '16px',
         transition: 'background-color 0.3s',
     };
-
 
     useEffect(() => {
         const fetchListingDetails = async () => {
@@ -160,8 +157,6 @@ const ListingDetails = () => {
         }
     };
 
-
-
     const confirmDelete = async () => {
         setShowConfirm(false);
         try {
@@ -184,13 +179,23 @@ const ListingDetails = () => {
         }
     };
 
+    // Show loading spinner
+    if (loading) {
+        return (
+            <div className="text-center">
+                <div className="spinner-border text-primary mt-4" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                <p>Loading details...</p>
+            </div>
+        );
+    }
 
-    if (loading) return <p className='text-center'>Loading...</p>;
     if (error) return <p className='text-center'>{error}</p>;
     if (!listing) return <p className='text-center'>No listing found.</p>;
 
     return (
-        <div className=" container mt-3">
+        <div className="container mt-4">
             <ToastContainer />
             {showConfirm && (
                 <ConfirmationDialog
@@ -199,7 +204,7 @@ const ListingDetails = () => {
                 />
             )}
             <div className="row justify-content-center">
-                <div className=" col-md-6 ">
+                <div className="col-md-6 mt-4">
                     <h3 className="text-center"><b>{listing.title}</b></h3>
                     <div className="card show-card listing-card">
                         <img src={listing.image.url} className="card-img-top show-img" alt="listing_image" />
@@ -230,7 +235,6 @@ const ListingDetails = () => {
                                     <button className='btn btn-danger mb-2 mb-md-0 me-2' onClick={handleBookNow} disabled={isBooking}>
                                         {isBooking ? "Booking..." : "Book Now"}
                                     </button>
-                                    {/* <Link href="#" className="btn btn-danger ms-2">Book A Visit</Link> */}
                                 </div>
                             )}
                         </div>
@@ -242,4 +246,3 @@ const ListingDetails = () => {
 };
 
 export default ListingDetails;
-

@@ -45,15 +45,18 @@ function SeeYourListing() {
         }
     }, [authToken, navigate]); // Re-run effect if token changes
 
-
-
     return (
         <div className="explore-container">
             <ToastContainer />
             <h2 className="mt- mb-2" style={{ textAlign: "center" }}>Your Listings</h2>
             <div className="explore-listing">
                 {loading ? ( // Show loading indicator while data is being fetched
-                    <p>Loading, please wait...</p>
+                    <div className="text-center">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading, please wait...</p>
+                    </div>
                 ) : allListings.length > 0 ? (
                     allListings.map((data, idx) => (
                         <Link to={`/listings/${data._id}`} className="listing-link" key={idx}>

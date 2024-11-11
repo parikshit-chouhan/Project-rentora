@@ -62,18 +62,25 @@ function SeeYourBooking() {
     };
 
     if (loading) {
-        return <p className='text-center'>Loading... Please wait.</p>;
+        return (
+            <div className="text-center">
+                <div className="spinner-border text-primary mt-4" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+                <p>Loading... Please wait.</p>
+            </div>
+        );
     }
 
     return (
-        <div className="container mt-3">
+        <div className="container mt-5">
             <ToastContainer />
             {bookings.length === 0 ? (
                 <p className="text-center">No bookings found.</p>
             ) : (
                 <div className="row justify-content-center">
                     {bookings.map((booking) => (
-                        <div className="col-md-4 mb-4" key={booking._id}>
+                        <div className="col-md-4 mb-4 mt-4" key={booking._id}>
                             <h4 className="text-center"><b>{booking.listingId.title}</b></h4>
                             <div className="card show-card listing-card">
                                 <img src={booking.listingId.image.url} className="card-img-top show-img" alt="listing_image" />
