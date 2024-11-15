@@ -43,6 +43,7 @@ body {
   font-weight: bold;
   text-decoration: none !important;
   cursor: pointer;
+  margin-left: 1rem;
 
 }
 
@@ -63,6 +64,18 @@ body {
   background-color: white;
   z-index: 1210;
   /* Ensure it stays above other content */
+}
+
+.join-btn {
+  font-weight: bolder;
+  color: white !important;
+  background-color: #e63946 !important;
+  border-radius: 25px !important;
+  margin-right: 2rem !important;
+}
+
+.join-btn:hover {
+  background-color: #d62828 !important;
 }
 
 
@@ -447,6 +460,10 @@ input.form-control {
   padding: 10px 20px;
   border-radius: 20px;
   transition: background-color 0.3s ease;
+}
+
+.btn:hover{
+  background-color: #c92d3a !important;
 }
 
 .shadow {
