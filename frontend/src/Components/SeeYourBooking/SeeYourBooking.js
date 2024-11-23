@@ -74,10 +74,12 @@ function SeeYourBooking() {
 
     return (
         <div className="container mt-5">
+             <h2 className="mt-4 mb-1" style={{ textAlign: "center" }}>Your Bookings</h2>
             <ToastContainer />
             {bookings.length === 0 ? (
                 <p className="text-center">No bookings found.</p>
             ) : (
+                
                 <div className="row justify-content-center">
                     {bookings.map((booking) => (
                         <div className="col-md-4 mb-4 mt-4" key={booking._id}>

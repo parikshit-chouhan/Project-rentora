@@ -151,8 +151,6 @@ body {
     width: 100%;
     border-radius: 0 !important;
     box-shadow: none;
-    
-    text-align: center;
   }
   .dropdown{
     display: fle;
@@ -655,3 +653,59 @@ input.form-control {
 .new-row {
   margin-bottom: 20px;
 }
+
+/* responsive design */
+/* Adjust form container for smaller screens */
+@media (max-width: 768px) {
+  .new-container {
+    padding: 15px;
+  }
+
+  .new-h3 {
+    font-size: 1.5rem; /* Reduce heading size */
+    text-align: center; /* Center align heading */
+  }
+
+  .add-btn {
+    width: 100%; /* Make button full-width */
+    font-size: 1rem;
+  }
+}
+
+
+/* responsive design */
+/* add new listing */
+@media (max-width: 768px) {
+  .new-container {
+    max-width: 80%; /* Adjust width to leave space on sides */
+    margin: 0 auto; /* Center align the container */
+    margin-top: 2rem;
+
+    
+  }
+}
+
+@media (max-width: 576px) {
+  .new-container {
+    max-width: 80%; /* More space for extra small screens */
+  }
+}
+
+/* login/signup */
+/* Reduce container width for small screens */
+@media (max-width: 768px) {
+  .shadow {
+    max-width: 80%; /* Adjust width for medium-small screens */
+    margin: 0 auto; /* Center the container */
+  }
+}
+
+@media (max-width: 576px) {
+  .shadow {
+    max-width: 80%; /* Extra space for very small screens */
+  }
+}
+
+
+/* responsive design */
+
