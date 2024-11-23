@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,6 +11,7 @@ function Navbar() {
     const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
 
     const handleLogout = async () => {
+        setIsOpen(false);
         setLoading(true); // Set loading to true when logout is initiated
         try {
             const response = await axios.get("https://rentora-c5dt.onrender.com/logout",
@@ -32,6 +33,41 @@ function Navbar() {
             console.error("Logout failed:", error);
         }
     };
+    // chatgpt
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleNavbar = () => {
+
+    setIsOpen(!isOpen);
+    };
+    const closeNavbar = () => {
+        setIsOpen(false); // Close the navbar
+    };
+
+    const handleOutsideClick = (event) => {
+        // Check if the click is outside the navbar or toggler
+        if (
+            !event.target.closest('.navbar-collapse') && // Navbar menu
+            !event.target.closest('.navbar-toggler') // Toggler button
+        ) {
+            setIsOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        // Add event listener when navbar is open
+        if (isOpen) {
+            document.addEventListener('click', handleOutsideClick);
+        } else {
+            document.removeEventListener('click', handleOutsideClick);
+        }
+
+        // Cleanup the event listener
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, [isOpen]);
+    // chatgpt
 
     return (
         <div>
@@ -40,25 +76,19 @@ function Navbar() {
                     <Link to="/" className="navbar-brand ms-3">
                         <h3 className="logo"> RENTORA</h3>
                     </Link>
-
-                    {/* Toggle button for medium and smaller screens */}
                     <button
                         className="navbar-toggler"
                         type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
+                        onClick={toggleNavbar}
                     >
                         <span className="navbar-toggler-icon"></span>
                     </button>
 
-                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNavAltMarkup">
                         <div className="navbar-nav ms-auto">
-                            <Link className="nav-link nav-content" to="/explore">Explore</Link>
-                            <Link className="nav-link nav-content" to="/addNewHome">Add New Home</Link>
-                            <Link className="nav-link nav-content me-4 " to="/about">About Us</Link>
+                            <Link className="nav-link nav-content" to="/explore" onClick={closeNavbar}>Explore</Link>
+                            <Link className="nav-link nav-content" to="/addNewHome" onClick={closeNavbar}>Add New Home</Link>
+                            <Link className="nav-link nav-content me-4 " to="/about" onClick={closeNavbar}>About Us</Link>
 
                             {username && username !== 'undefined' ? (
                                 <div className="nav-item dropdown">
@@ -73,17 +103,17 @@ function Navbar() {
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                         <li>
-                                            <Link className="dropdown-item" to={"/seeyourlisting"}>
+                                            <Link className="dropdown-item" to={"/seeyourlisting"} onClick={closeNavbar} >
                                                 <i className="fa-solid fa-bed me-2"></i> See Your Listings
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link className="dropdown-item" to="/seeyourbooking">
+                                            <Link className="dropdown-item" to="/seeyourbooking" onClick={closeNavbar}>
                                                 <i className="fas fa-key me-2"></i> See Your Bookings
                                             </Link>
                                         </li>
                                         <li>
-                                            <button className="dropdown-item" onClick={handleLogout}>
+                                            <button className="dropdown-item" onClick={handleLogout}  >
                                                 <i className="fas fa-sign-out-alt me-2"></i> Logout
                                             </button>
                                         </li>
@@ -91,9 +121,9 @@ function Navbar() {
                                 </div>
                             ) : (
                                 <>
-                                <Link className="nav-link signup-btn" to="/signup">Sign up</Link>
-                                <Link className="nav-link login-btn" to="/login">Log in</Link>
-                            </>
+                                    <Link className="nav-link signup-btn" to="/signup" onClick={closeNavbar} >Sign up</Link>
+                                    <Link className="nav-link login-btn" to="/login" onClick={closeNavbar}>Log in</Link>
+                                </>
                             )}
                         </div>
                     </div>
@@ -109,7 +139,7 @@ function Navbar() {
                     <p>Please Wait...</p>
                 </div>
             )}
-            <ToastContainer />
+            <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );
 }

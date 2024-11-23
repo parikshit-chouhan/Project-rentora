@@ -88,7 +88,7 @@ const CreateListing = () => {
     if (!isVerified) return null; // Conditional render
 
     return (
-        <div className="container">
+        <div className="container mt-5">
 
             <div className="row mb-3 mt-3 new-row">
                 <div className="col-lg-8 offset-lg-2 col-md-10 offset-md-1">

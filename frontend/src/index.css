@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin-top: 70px;
   -webkit-font-smoothing: antialiased;
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
@@ -55,15 +55,129 @@ body {
   /* Center the container */
 }
 
+/* chatgpt */
+
+
+/* Navbar Styling */
+
+
+/* Logo Styling */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e63946;
+}
+
+.navbar-toggler {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* Toggler Icon Hover */
+.navbar-toggler:hover {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+/* Navbar Links */
+.nav-item .nav-link {
+  color: #333;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-item .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-content {
+  color: #222;
+  border-radius: 3rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  border-radius: 10px !important;
+  padding: 0.5rem;
+}
+
+.dropdown-menu a {
+  font-size: 0.9rem;
+}
+
+.dropdown-item:hover {
+  border-radius: 10px;
+  background-color: #d62828 !important;
+  color: white !important;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    max-height: 0;
+    transition: max-height 0.5s ease-in-out;
+  }
+
+  .navbar-collapse.show {
+    max-height: 500px; 
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 0.5rem 1rem;
+  }
+  .signup-btn{
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    width: 100%;
+    border-radius: 0 !important;
+    box-shadow: none;
+    
+    text-align: center;
+  }
+  .dropdown{
+    display: fle;
+    align-items: center !important;
+    justify-content: center;
+  }
+}
+
+
+/* chatgpt */
+
 
 .navbar {
-  position: sticky !important;
-  /* Keep the navbar at the top */
+  position: fixed !important;
+  width: 100%;
   top: 0 !important;
   height: 5rem;
   background-color: white;
   z-index: 1210;
-  /* Ensure it stays above other content */
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .join-btn {
@@ -80,13 +194,14 @@ body {
 
 
 
-.nav-content{
+.nav-content {
   color: #222;
   border-radius: 3rem;
   border: none;
   cursor: pointer;
   /* transition: background-color 0.3s; */
-    transition: all 0.3s ease; /* Smooth transition over 0.3 seconds */
+  transition: all 0.3s ease;
+  /* Smooth transition over 0.3 seconds */
 
 }
 
@@ -462,7 +577,7 @@ input.form-control {
   transition: background-color 0.3s ease;
 }
 
-.btn:hover{
+.btn:hover {
   background-color: #c92d3a !important;
 }
 
