@@ -479,7 +479,9 @@ app.post("/createBooking/:id", userVerification, async (req, res) => {
         };
 
         axios.request(options).then(function (response) {
+            existingListing.status === "Occupied"
             console.log(response.data);
+
             return res.status(200).json({ success: true, ...response.data });
         }).catch(function (error) {
             console.error("Error creating order:", error);
