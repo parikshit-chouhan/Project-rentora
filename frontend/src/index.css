@@ -151,9 +151,12 @@ body {
     width: 100%;
     border-radius: 0 !important;
     box-shadow: none;
+    margin-right: 1rem;
+    margin-left: -1rem;
   }
   .dropdown{
-    display: fle;
+    display: flex;
+    flex-direction: column;
     align-items: center !important;
     justify-content: center;
   }
@@ -167,7 +170,7 @@ body {
   position: fixed !important;
   width: 100%;
   top: 0 !important;
-  height: 5rem;
+  height: 4rem;
   background-color: white;
   z-index: 1210;
   padding: 1rem;
@@ -575,9 +578,7 @@ input.form-control {
   transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #c92d3a !important;
-}
+
 
 .shadow {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.349) !important;
@@ -703,6 +704,21 @@ input.form-control {
 @media (max-width: 576px) {
   .shadow {
     max-width: 80%; /* Extra space for very small screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    max-width: 90%; /* Adjust width for medium-small screens */
+    margin: 2px auto; /* Center the container */
+  }
+}
+
+@media (max-width: 576px) {
+  .about-section {
+    max-width: 90%; /* Extra space for very small screens */
+    margin-top: 3rem;
+    margin-bottom: 3rem;
   }
 }
 
