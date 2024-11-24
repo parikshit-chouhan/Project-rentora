@@ -6,11 +6,27 @@ import { ToastContainer, toast } from "react-toastify";
 function Navbar() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false); // Loading state added
+    const [isOpen, setIsOpen] = useState(false);
     const username = localStorage.getItem('username');
 
-    const handleSuccess = (msg) =>
-        toast.success(msg, { position: "top-right", autoClose: 3000 });
-    
+    const handleSuccess = (msg) => {
+        setTimeout(() => {
+            toast.success(msg, {
+                autoClose: 1000,
+                position: "top-right",
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }, 0); // Delay to allow DOM to settle
+    };
+    useEffect(() => {
+        return () => {
+            toast.dismiss(); // Clear all toasts on unmount
+        };
+    }, []);
+
 
     const handleLogout = async () => {
         setIsOpen(false);
@@ -25,10 +41,11 @@ function Navbar() {
                 localStorage.removeItem('username');
                 localStorage.removeItem('user_id');
                 localStorage.removeItem('token');
-                handleSuccess(message);
+                handleSuccess("User logged out successfully");
                 setTimeout(() => {
                     navigate("/login");
-                }, 3000);
+                }, 1000);
+                return;
             }
         } catch (error) {
             setLoading(false); // Set loading to false if error occurs
@@ -36,11 +53,10 @@ function Navbar() {
         }
     };
     // chatgpt
-    const [isOpen, setIsOpen] = useState(false);
+
 
     const toggleNavbar = () => {
-
-    setIsOpen(!isOpen);
+        setIsOpen(!isOpen);
     };
     const closeNavbar = () => {
         setIsOpen(false); // Close the navbar
@@ -73,6 +89,7 @@ function Navbar() {
 
     return (
         <div>
+            <ToastContainer position="top-right" autoClose={1000} limit={1} />
             <nav className="navbar navbar-expand-md bg-body-light border-bottom sticky-top ">
                 <div className="container-fluid">
                     <Link to="/" className="navbar-brand ms-3">
@@ -141,7 +158,7 @@ function Navbar() {
                     <p>Please Wait...</p>
                 </div>
             )}
-            <ToastContainer position="top-right" autoClose={3000} />
+
         </div>
     );
 }

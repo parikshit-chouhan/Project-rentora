@@ -67,7 +67,7 @@ function Login() {
 
     return (
         <>
-            <ToastContainer position="top-right" autoClose={3000} />
+            <ToastContainer limit={1} />
             <h1 className="text-center mt-4 mb-4" style={{ color: '#e63946' }}>Login</h1>
             <div className="row mb-5 justify-content-center">
                 <div className="col-md-6 col-lg-4 p-4 shadow rounded" style={{ backgroundColor: '#fdfdff' }}>
