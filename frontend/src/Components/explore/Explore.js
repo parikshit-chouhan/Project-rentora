@@ -7,7 +7,7 @@ function Explore() {
     const [loading, setLoading] = useState(true); // Loading state added
 
     useEffect(() => {
-        axios.get("https://rentora-c5dt.onrender.com/allListings")
+        axios.get("https://rentora-server.vercel.app/allListings")
             .then((res) => {
                 if (res.data.status) {
                     setAllListings(res.data.allListings);
