@@ -19,7 +19,7 @@ const VerifyBooking = () => {
                 console.log("Backend Response:", res.data); // Log the response
 
                 const currentStatus = res.data.status; // Check status in response
-                console.log("Current Status:", currentStatus); 
+                console.log("Current Status:", currentStatus);
 
                 setStatus(currentStatus); // Set the status state
 
@@ -51,7 +51,7 @@ const VerifyBooking = () => {
     return (
         <>
             <ToastContainer position="top-right" autoClose={2000} hideProgressBar={false} />
-            <div className='text-center'>Verifying your booking, please wait...</div>
+            <div className='text-center mt-5'>Verifying your booking, please wait...</div>
         </>
     );
 };
