@@ -86,7 +86,7 @@ const ListingDetails = () => {
     useEffect(() => {
         const fetchListingDetails = async () => {
             try {
-                const response = await axios.get(`https://rentora-c5dt.onrender.com/listings/${id}`, {
+                const response = await axios.get(`https://rentora-server.vercel.app/listings/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${authToken}`,
                     }
@@ -116,7 +116,7 @@ const ListingDetails = () => {
         try {
             // Get session data for Cashfree
             const res = await axios.post(
-                `https://rentora-c5dt.onrender.com/createBooking/${id}`,
+                `https://rentora-server.vercel.app/createBooking/${id}`,
                 { userId },
                 {
                     headers: {
@@ -160,7 +160,7 @@ const ListingDetails = () => {
     const confirmDelete = async () => {
         setShowConfirm(false);
         try {
-            const response = await axios.delete(`https://rentora-c5dt.onrender.com/listing/${id}`, {
+            const response = await axios.delete(`https://rentora-server.vercel.app/listing/${id}`, {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 },

@@ -8,13 +8,15 @@ function Navbar() {
     const [loading, setLoading] = useState(false); // Loading state added
     const username = localStorage.getItem('username');
 
-    const handleSuccess = (msg) => toast.success(msg, { position: "top-right" });
+    const handleSuccess = (msg) =>
+        toast.success(msg, { position: "top-right", autoClose: 3000 });
+    
 
     const handleLogout = async () => {
         setIsOpen(false);
         setLoading(true); // Set loading to true when logout is initiated
         try {
-            const response = await axios.get("https://rentora-c5dt.onrender.com/logout",
+            const response = await axios.get("https://rentora-server.vercel.app/logout",
                 { withCredentials: true });
             setLoading(false); // Set loading to false once response is received
             const { success, message } = response.data;
@@ -26,7 +28,7 @@ function Navbar() {
                 handleSuccess(message);
                 setTimeout(() => {
                     navigate("/login");
-                }, 1000);
+                }, 3000);
             }
         } catch (error) {
             setLoading(false); // Set loading to false if error occurs

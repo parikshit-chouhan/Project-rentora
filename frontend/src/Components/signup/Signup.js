@@ -35,7 +35,7 @@ function Signup() {
         setLoading(true);
         try {
             const { data } = await axios.post(
-                'https://rentora-c5dt.onrender.com/signup',
+                'https://rentora-server.vercel.app/signup',
                 { ...inputValue },
                 { withCredentials: true }
             );

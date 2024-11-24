@@ -61,7 +61,7 @@ const CreateListing = () => {
         }
 
         try {
-            const response = await axios.post('https://rentora-c5dt.onrender.com/addListing', formDataToSend, {
+            const response = await axios.post('https://rentora-server.vercel.app/addListing', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

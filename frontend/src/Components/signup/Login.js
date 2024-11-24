@@ -30,7 +30,7 @@ function Login() {
         setLoading(true);
         try {
             const { data } = await axios.post(
-                'https://rentora-c5dt.onrender.com/login',
+                'https://rentora-server.vercel.app/login',
                 { email, password, number },
                 { withCredentials: true }
             );

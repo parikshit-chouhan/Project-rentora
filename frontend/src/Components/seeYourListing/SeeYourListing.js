@@ -17,7 +17,7 @@ function SeeYourListing() {
             console.log("see your listing", id)
             const fetchListing = async () => {
                 try {
-                    const res = await axios.get(`https://rentora-c5dt.onrender.com/seeListing/${id}`, {
+                    const res = await axios.get(`https://rentora-server.vercel.app/seeListing/${id}`, {
                         headers: {
                             'Authorization': `Bearer ${authToken}`,
                         }

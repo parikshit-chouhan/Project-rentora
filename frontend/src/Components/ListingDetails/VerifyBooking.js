@@ -14,7 +14,7 @@ const VerifyBooking = () => {
         const fetchStatus = async () => {
             try {
                 const res = await axios.get(
-                    `https://rentora-c5dt.onrender.com/verify/${orderId}/${userId}/${listingId}`
+                    `https://rentora-server.vercel.app/verify/${orderId}/${userId}/${listingId}`
                 );
                 console.log("Backend Response:", res.data); // Log the response
 

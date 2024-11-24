@@ -40,7 +40,7 @@ const EditListing = () => {
 
         const fetchListing = async () => {
             try {
-                const response = await axios.get(`https://rentora-c5dt.onrender.com/listings/${id}`, {
+                const response = await axios.get(`https://rentora-server.vercel.app/listings/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${authToken}`, 
                     },
@@ -73,7 +73,7 @@ const EditListing = () => {
         }
 
         try {
-            const response = await axios.put(`https://rentora-c5dt.onrender.com/listing/${id}`, formDataToSend, {
+            const response = await axios.put(`https://rentora-server.vercel.app/listing/${id}`, formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

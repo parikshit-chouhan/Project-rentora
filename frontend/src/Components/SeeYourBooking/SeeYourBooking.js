@@ -21,7 +21,7 @@ function SeeYourBooking() {
             }
 
             try {
-                const response = await axios.get(`https://rentora-c5dt.onrender.com/getBooking/${userId}`, {
+                const response = await axios.get(`https://rentora-server.vercel.app/getBooking/${userId}`, {
                     headers: { 'Authorization': `Bearer ${authToken}`,  }
                 });
 
@@ -42,7 +42,7 @@ function SeeYourBooking() {
 
     const handleCancel = async (bookingId) => { // Accept bookingId as a parameter
         try {
-            const response = await axios.delete(`https://rentora-c5dt.onrender.com/cancelBooking/${bookingId}`, {
+            const response = await axios.delete(`https://rentora-server.vercel.app/cancelBooking/${bookingId}`, {
                 headers: { 'Authorization': `Bearer ${cookies.token}` }
             });
 
