@@ -383,9 +383,9 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: url('https://unsplash.com/photos/a-close-up-of-a-flower-on-a-black-background-yQmJvIF8UPM') !important;
+  background-image: url('../src/assets/house1.jpg') !important;
   position: relative;
-  /* height: 100vh; */
+  height: 100vh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -393,7 +393,7 @@ body {
   justify-content: center;
   text-align: center;
   color: black;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
   margin-bottom: 5rem;
 }
 
@@ -473,7 +473,7 @@ body {
   background-color: #f8f9fa;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(49, 48, 48, 0.497);
   transition: transform 0.3s ease;
   text-align: left;
   flex: 1 1 calc(33.333% - 40px);
